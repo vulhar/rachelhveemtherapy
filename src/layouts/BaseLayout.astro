@@ -1,0 +1,52 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Rachel Hveem Therapy',
+  description = 'Compassionate, collaborative therapy for adults.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f8f5ef" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --ink: #20322d;
+    --muted: #52625d;
+    --paper: #f8f5ef;
+    --surface: #fffdf9;
+    --sage: #dbe6dc;
+    --sage-dark: #315b4b;
+    --terracotta: #a84f37;
+    --line: #c7d2c9;
+    font-family: Georgia, 'Times New Roman', serif;
+    color: var(--ink);
+    background: var(--paper);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; min-width: 320px; background: var(--paper); }
+  a { color: inherit; }
+  button, input, textarea { font: inherit; }
+  :focus-visible { outline: 3px solid #174f8b; outline-offset: 3px; }
+  .skip-link { position: fixed; z-index: 100; left: 1rem; top: -5rem; padding: .75rem 1rem; background: #fff; color: #10241d; font-family: Arial, sans-serif; font-weight: 700; }
+  .skip-link:focus { top: 1rem; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+</style>
